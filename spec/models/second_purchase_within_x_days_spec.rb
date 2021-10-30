@@ -26,4 +26,14 @@ RSpec.describe SecondPurchaseWithinXDaysRule do
     reward = subject.apply(new_record, existing_memory: existing_memory)
     expect(reward).to be_nil
   end
+
+
+  it 'returns reward for existing memory within 30 days' do
+    new_record = { customer_id: 65, purchase_amount_cents: 1800, created_at: Time.utc(2009, 1, 12, 6, 1) }
+    existing_memory = [{ customer_id: 65, purchase_amount_cents: 1800, created_at: Time.utc(2009, 1, 1, 6, 1) }]
+    reward = subject.apply(new_record, existing_memory: existing_memory)
+    expect(reward).to eql({ reward_date: Time.now, reward_type: 'twenty percent off next order' })
+  end
+
+
 end
