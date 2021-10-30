@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require_relative './models'
 
+# Setup the backend for the entire project.
 class Backend
   attr_accessor :rules_list, :customer_purchases
 
