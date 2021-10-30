@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'date'
 
+# Rule to give 20 percent off if purchase made within 30 days.
 class SecondPurchaseWithinXDaysRule
   attr_accessor :threshold
 

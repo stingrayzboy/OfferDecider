@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Rule to give next order free if purchase made more than 1500 Cents.
 class HigherThanXRule
   attr_accessor :threshold
 
