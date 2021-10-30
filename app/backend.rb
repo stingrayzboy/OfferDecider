@@ -10,8 +10,8 @@ class Backend
     self.rules_list = []
     self.customer_purchases = []
     rules_list << HigherThanXRule.new
-    rules_list << TodayIsCertainDayOfTheMonthRule.new
     rules_list << SecondPurchaseWithinXDaysRule.new
+    rules_list << TodayIsCertainDayOfTheMonthRule.new
   end
 
   def get_reward(new_record)

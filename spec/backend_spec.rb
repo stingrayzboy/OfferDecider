@@ -35,7 +35,12 @@ RSpec.describe Backend do
       reward = subject.get_reward(new_record)
       expect(reward).to eql({ reward_date: Time.now, reward_type: 'Next Purchase Free Reward' })
 
-      another_new_record = { customer_id: 65, purchase_amount_cents: 1800, created_at: Time.now + 1 }
+      subject.customer_purchases = customer_purchases
+      new_record = { customer_id: 653, purchase_amount_cents: 1800, created_at: Time.now }
+      reward = subject.get_reward(new_record)
+      expect(reward).to eql({ reward_date: Time.now, reward_type: 'Next Purchase Free Reward' })
+
+      another_new_record = { customer_id: 65, purchase_amount_cents: 180, created_at: Time.now + 1 }
       reward = subject.get_reward(another_new_record)
       expect(reward).to eql({ reward_date: Time.now, reward_type: 'twenty percent off next order' })
 
